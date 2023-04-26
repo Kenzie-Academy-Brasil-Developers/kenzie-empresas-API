@@ -1,0 +1,8 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Kenzie Empresas",
+    "description": "API para a execusão do projeto individual do M2",
+    "version": "1.0.0"
+  }
+}
