@@ -42,15 +42,15 @@ model Department {
 }
 
 model Employee {
-  id            String     @id @unique @default(uuid())
+  id            String      @id @unique @default(uuid())
   name          String
-  email         String     @unique
+  email         String      @unique
   password      String
-  is_admin      Boolean    @default(false)
-  company       Company    @relation(references: [id], fields: [company_id], onDelete: Cascade)
-  company_id    String
-  department    Department @relation(fields: [department_id], references: [id], onDelete: Cascade)
-  department_id String
+  is_admin      Boolean     @default(false)
+  company       Company?    @relation(references: [id], fields: [company_id], onDelete: Cascade)
+  company_id    String?
+  department    Department? @relation(fields: [department_id], references: [id], onDelete: Cascade)
+  department_id String?
 
   @@map("employees")
 }

@@ -3,7 +3,7 @@ import { createCategoryService } from "../services/category.service";
 import { ICreateCategory } from "../interfaces";
 
 
-export async function createCategoryController(req: Request, res: Response, next: NextFunction) {
+export  const createCategoryController = async(req: Request, res: Response, next: NextFunction) => {
   const data: ICreateCategory = req.body
 
   try {

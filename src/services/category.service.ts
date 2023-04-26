@@ -10,7 +10,6 @@ export async function createCategoryService(data: ICreateCategory) {
       name: data.name
     }
   })
-  console.log(checkCategory)
 
   if (checkCategory) {
     throw new AppError('Essa categoria já está cadastrada', 400)
