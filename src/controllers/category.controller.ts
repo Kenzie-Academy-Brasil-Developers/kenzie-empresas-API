@@ -5,9 +5,10 @@ import { ICreateCategory } from "../interfaces";
 
 export  const createCategoryController = async(req: Request, res: Response, next: NextFunction) => {
   const data: ICreateCategory = req.body
+  const {id} = req.user
 
   try {
-    const newCategory = await createCategoryService(data)
+    const newCategory = await createCategoryService(data, id)
 
     return res.json(newCategory)
   } catch (error) {

@@ -27,6 +27,12 @@ export interface ICompanyCreateData {
   category_id: string
 }
 
+export interface IDepartmentCreateData {
+  name: string
+  description: string
+  company_id: string
+}
+
 export interface IEmployeeResponseData extends IEmployeeCreateData {
   id: string
   company?: {
