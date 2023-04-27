@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { createCompanyController } from "../controllers/company.controller";
+import { createCompanyController, readAllCompaniesController, readCompaniesByCategoryController, readCompanyByIdController } from "../controllers/company.controller";
 import { ensureAuth } from "../middlewares/ensureAuth";
 
 export const companyRoutes = Router()
 
+companyRoutes.get('/readAll', readAllCompaniesController)
 companyRoutes.use(ensureAuth)
 companyRoutes.post('/create', createCompanyController)
+companyRoutes.get('/readById/:company_id', readCompanyByIdController)
+companyRoutes.get('/readByCategory/:category_name', readCompaniesByCategoryController)

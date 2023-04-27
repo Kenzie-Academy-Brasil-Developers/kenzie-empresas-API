@@ -43,3 +43,51 @@ export const companyCreateService = async (data: ICompanyCreateData, id: string)
 
   return newCompany
 }
+
+export const readAllCompanyService = async () => {
+  return await prisma.company.findMany()
+}
+
+export const readCompanyByIdService = async (id: string) => {
+  const company =  await prisma.company.findUnique({
+    where: {
+      id
+    },
+    include: {
+      category: true,
+      departments: true,
+      employees: true
+    }
+  })
+  console.log(company)
+
+  if(!company) {
+    throw new AppError('Empresa não encontrada, por favor verifique o id informado e tente novamente')
+  }
+
+  return company
+}
+
+export const readCompaniesByCategoryService = async (category_name: string) => {
+  const category = await prisma.category.findUnique({
+    where: {
+      name: category_name
+    }
+  })
+
+  if(!category) {
+    throw new AppError('Categoria não encontrada, por favor verifique as categorias disponíveis e tente novamente')
+  }
+
+  const companies = await prisma.company.findMany({
+    where: {
+      category_id: category.id
+    }
+  })
+
+  if(!companies) {
+    throw new AppError('Categoria inválida, por favor verifique o id da categoria informada e tente novamente')
+  }
+
+  return companies
+}
