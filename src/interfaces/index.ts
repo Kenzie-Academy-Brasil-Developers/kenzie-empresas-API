@@ -50,3 +50,8 @@ export interface IEmployeeResponseData extends IEmployeeCreateData {
   }
   department_id?: string
 }
+
+export interface IDepartmentUpdateData {
+  name: string
+  description: string
+}
