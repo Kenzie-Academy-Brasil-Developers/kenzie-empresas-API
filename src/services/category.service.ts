@@ -37,3 +37,7 @@ export async function createCategoryService(data: ICreateCategory, id: string) {
 
   return newCategory
 }
+
+export async function readAllCategoriesService() {
+  return await prisma.category.findMany()
+}
