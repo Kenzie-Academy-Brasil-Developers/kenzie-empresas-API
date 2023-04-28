@@ -33,6 +33,13 @@ export interface IDepartmentCreateData {
   company_id: string
 }
 
+export interface IAdmUpdateEmploye {
+  name?: string
+  email?: string
+  company_id?: string
+  department_id?: string
+}
+
 export interface IEmployeeResponseData extends IEmployeeCreateData {
   id: string
   company?: {

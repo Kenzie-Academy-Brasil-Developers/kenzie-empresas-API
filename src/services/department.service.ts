@@ -9,11 +9,11 @@ export const createDepartmentService = async (data: IDepartmentCreateData, id: s
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem cadastrar um novo departamento', 401)
   }
 
@@ -23,7 +23,7 @@ export const createDepartmentService = async (data: IDepartmentCreateData, id: s
     }
   })
 
-  if(!checkCompany) {
+  if (!checkCompany) {
     throw new AppError('Empresa não encontrada, por favor verifique o id da empresa informada e tente novamente')
   }
 
@@ -34,7 +34,7 @@ export const createDepartmentService = async (data: IDepartmentCreateData, id: s
     }
   })
 
-  if(checkDepartment) {
+  if (checkDepartment) {
     throw new AppError('Departamento já cadastrado nesta empresa')
   }
 
@@ -52,11 +52,11 @@ export const readAllDepartmentsService = async (id: string) => {
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem consultar os departamentos', 401)
   }
 
@@ -70,11 +70,11 @@ export const readDepartmentsByCompanyService = async (company_id: string, id: st
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem consultar os departamentos', 401)
   }
 
@@ -84,7 +84,7 @@ export const readDepartmentsByCompanyService = async (company_id: string, id: st
     }
   })
 
-  if(!checkCompany) {
+  if (!checkCompany) {
     throw new AppError('Empresa não encontrada, por favor verifique o id e tente novamente', 404)
   }
 
@@ -104,11 +104,11 @@ export const readDepartmentByIdService = async (department_id: string, id: strin
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem consultar os departamentos', 401)
   }
 
@@ -122,7 +122,7 @@ export const readDepartmentByIdService = async (department_id: string, id: strin
     }
   })
 
-  if(!department) {
+  if (!department) {
     throw new AppError('Departamento não encontrado, por favor verifique o id informado e tente novamente', 404)
   }
 
@@ -136,11 +136,11 @@ export const updateDepartmentByIdService = async (department_id: string, data: I
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem atualizar os departamentos', 401)
   }
 
@@ -150,7 +150,7 @@ export const updateDepartmentByIdService = async (department_id: string, data: I
     }
   })
 
-  if(!department) {
+  if (!department) {
     throw new AppError('Departamento não encontrado, por favor verifique o id informado e tente novamente', 404)
   }
 
@@ -174,27 +174,30 @@ export const deleteDepartmentByIdService = async (department_id: string, id: str
     }
   })
 
-  if(!checkUser) {
+  if (!checkUser) {
     throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
   }
 
-  if(!checkUser.is_admin) {
+  if (!checkUser.is_admin) {
     throw new AppError('Apenas usuários adminstradores podem deletar os departamentos', 401)
   }
-  
+
   const department = await prisma.department.findUnique({
     where: {
       id: department_id
     }
   })
 
-  if(!department) {
+  if (!department) {
     throw new AppError('Departamento não encontrado, por favor verifique o id informado e tente novamente', 404)
   }
 
-  return await prisma.department.delete({
+  const deleted = await prisma.department.delete({
     where: {
       id: department_id
     }
   })
+
+  return deleted
+
 }
