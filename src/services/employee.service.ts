@@ -302,7 +302,7 @@ export const hireEmployeeService = async (user_id: string, employe_id: string, d
 
   return {
     message: `Funcionário contratado para o departamento ${checkDepartment.name}`,
-    rest
+    employee: rest
   }
 }
 
@@ -345,7 +345,7 @@ export const dismissEmployeeService = async (user_id: string, employe_id: string
 
   return {
     message: 'Funcionário demitido com sucesso',
-    rest
+    employee: rest
   }
 }
 
