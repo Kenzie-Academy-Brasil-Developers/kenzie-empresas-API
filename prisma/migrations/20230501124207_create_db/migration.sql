@@ -29,17 +29,23 @@ CREATE TABLE "employees" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "is_admin" BOOLEAN NOT NULL DEFAULT false,
-    "company_id" TEXT NOT NULL,
-    "department_id" TEXT NOT NULL,
+    "company_id" TEXT,
+    "department_id" TEXT,
     CONSTRAINT "employees_company_id_fkey" FOREIGN KEY ("company_id") REFERENCES "companies" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT "employees_department_id_fkey" FOREIGN KEY ("department_id") REFERENCES "departments" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "employees_department_id_fkey" FOREIGN KEY ("department_id") REFERENCES "departments" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "categories_id_key" ON "categories"("id");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "categories_name_key" ON "categories"("name");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "companies_id_key" ON "companies"("id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "companies_name_key" ON "companies"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "departments_id_key" ON "departments"("id");
