@@ -339,13 +339,14 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/employeesUpdate"
+              },
               "examples": {
                 "user": {
                   "value": {
                     "name": "Rafael Jagochitz Bertoldo update",
-                    "email": "jagochitzqw@mail.com.update",
-                    "company_id": "d1e438dc-6560-49af-bd11-80143113134a",
-                    "department_id": "ae02ef69-edbe-4871-bbeb-1e7bdf739653"
+                    "email": "bertoldo@mail.com.update"
                   }
                 }
               }
@@ -421,6 +422,7 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": { "$ref": "#/components/schemas/employeesHire" },
               "examples": {
                 "hire": {
                   "value": {
@@ -574,8 +576,7 @@
               }
             }
           }
-        },
-        "security": [{}]
+        }
       }
     },
     "/companies/readByCategory/{category_name}": {
@@ -622,6 +623,9 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/departmentCreate"
+              },
               "examples": {
                 "department": {
                   "value": {
@@ -694,7 +698,7 @@
     "/departments/readById/{department_id}": {
       "get": {
         "description": "Rota responsável por listar um departamento a partir do id informado",
-        "tags": ["Token de Admin"],
+        "tags": ["Funcionários"],
         "parameters": [
           {
             "name": "Id do departamento",
@@ -729,8 +733,7 @@
               }
             }
           }
-        },
-        "security": [{}]
+        }
       }
     },
     "/departments/readByCompany/{company_id}": {
@@ -785,6 +788,9 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/departmentUpdatee"
+              },
               "examples": {
                 "department": {
                   "value": {
@@ -899,6 +905,28 @@
           }
         }
       },
+      "employeesUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "employeesHire": {
+        "type": "object",
+        "properties": {
+          "department_id": {
+            "type": "string"
+          }
+        }
+      },
       "employeesResponse": {
         "type": "object",
         "properties": {
@@ -963,6 +991,17 @@
             "type": "string"
           },
           "company_id": {
+            "type": "string"
+          }
+        }
+      },
+      "departmentUpdatee": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           }
         }

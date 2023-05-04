@@ -84,7 +84,7 @@ async function createUsers() {
   Usuário admin criado com sucesso!
   Utilize as seguintes credenciais:
   email: admin@mail.com
-  password: admin
+  password: 123456
   `);
 
   users.forEach(async (user) => {

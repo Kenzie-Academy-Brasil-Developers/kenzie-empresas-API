@@ -98,20 +98,6 @@ export const readDepartmentsByCompanyService = async (company_id: string, id: st
 }
 
 export const readDepartmentByIdService = async (department_id: string, id: string) => {
-  const checkUser = await prisma.employee.findUnique({
-    where: {
-      id
-    }
-  })
-
-  if (!checkUser) {
-    throw new AppError('Usuário não encontrado, por favor verifique o id informado', 404)
-  }
-
-  if (!checkUser.is_admin) {
-    throw new AppError('Apenas usuários adminstradores podem consultar os departamentos', 401)
-  }
-
   const department = await prisma.department.findUnique({
     where: {
       id: department_id
