@@ -185,14 +185,16 @@ export const updateEmployeeById = async (data: IAdmUpdateEmploye, user_id: strin
     }
   }
 
-  const checkEmail = await prisma.employee.findUnique({
-    where: {
-      email: data.email
+  if(data.email) {
+    const checkEmail = await prisma.employee.findUnique({
+      where: {
+        email: data.email
+      }
+    })
+  
+    if (checkEmail) {
+      throw new AppError('Email já cadastrado, por favor verifique o email informado e tente novamente', 401)
     }
-  })
-
-  if (checkEmail) {
-    throw new AppError('Email já cadastrado, por favor verifique o email informado e tente novamente', 401)
   }
 
   const checkEmploye = await prisma.employee.findUnique({
