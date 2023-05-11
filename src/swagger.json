@@ -27,36 +27,36 @@
                   "response": {
                     "value": [
                       {
-                        "uuid": "042cd7ac-c6fa-464b-88b3-51a2c3fb2e7c",
-                        "description": "Alimenticio"
+                        "id": "042cd7ac-c6fa-464b-88b3-51a2c3fb2e7c",
+                        "name": "Alimenticio"
                       },
                       {
-                        "uuid": "f0fe33d7-b78b-47de-859f-f74ee08ced52",
-                        "description": "Varejo"
+                        "id": "f0fe33d7-b78b-47de-859f-f74ee08ced52",
+                        "name": "Varejo"
                       },
                       {
-                        "uuid": "2fb07a07-c9f5-4427-b4e0-2330add177a9",
-                        "description": "Textil"
+                        "id": "2fb07a07-c9f5-4427-b4e0-2330add177a9",
+                        "name": "Textil"
                       },
                       {
-                        "uuid": "9b41ddcf-a4bd-4f48-a6c5-32f2abb3b3dc",
-                        "description": "Manufatura"
+                        "id": "9b41ddcf-a4bd-4f48-a6c5-32f2abb3b3dc",
+                        "name": "Manufatura"
                       },
                       {
-                        "uuid": "62de3b6f-bba4-4bc5-af6e-fb30b4356bf3",
-                        "description": "Aeroespacial"
+                        "id": "62de3b6f-bba4-4bc5-af6e-fb30b4356bf3",
+                        "name": "Aeroespacial"
                       },
                       {
-                        "uuid": "980fc603-8915-41e0-9240-0c8c3b024c3d",
-                        "description": "Automotiva"
+                        "id": "980fc603-8915-41e0-9240-0c8c3b024c3d",
+                        "name": "Automotiva"
                       },
                       {
-                        "uuid": "3854e74a-0a96-43dd-b44b-f884c08ff3a1",
-                        "description": "TI"
+                        "id": "3854e74a-0a96-43dd-b44b-f884c08ff3a1",
+                        "name": "TI"
                       },
                       {
-                        "uuid": "f38dad57-0f16-4bd5-86e5-c3a7706df623",
-                        "description": "Atacado"
+                        "id": "f38dad57-0f16-4bd5-86e5-c3a7706df623",
+                        "name": "Atacado"
                       }
                     ]
                   }
@@ -542,7 +542,7 @@
     "/companies/readById/{company_id}": {
       "get": {
         "description": "Rota responsável por listar uma empresa a partir do id informado",
-        "tags": ["Token de Admin"],
+        "tags": ["Funcionários"],
         "parameters": [
           {
             "name": "Id da empresa",
